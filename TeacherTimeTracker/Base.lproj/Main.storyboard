@@ -62,19 +62,33 @@
             </objects>
             <point key="canvasLocation" x="-409" y="418"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Time Entries-->
         <scene sceneID="5s4-Zt-30E">
             <objects>
-                <tableViewController id="Pag-Wl-f12" sceneMemberID="viewController">
+                <tableViewController id="Pag-Wl-f12" customClass="TimeEntryTableViewController" customModule="TeacherTimeTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="8Hq-9Q-NfP">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="lqd-CU-alo">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="749-fV-2FK" detailTextLabel="aZa-wj-d4c" style="IBUITableViewCellStyleSubtitle" id="lqd-CU-alo" customClass="PFTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lqd-CU-alo" id="Qbm-4S-lKa">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="749-fV-2FK">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aZa-wj-d4c">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -83,16 +97,16 @@
                             <outlet property="delegate" destination="Pag-Wl-f12" id="Inc-iU-rZu"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="fVy-xb-xh5"/>
+                    <navigationItem key="navigationItem" title="Time Entries" id="fVy-xb-xh5"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9cG-na-atg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="989" y="-745"/>
         </scene>
-        <!--Tab Bar View Controller-->
+        <!--TimeEntries-->
         <scene sceneID="45x-4F-67q">
             <objects>
-                <tabBarController id="vSb-Le-vDi" customClass="TabBarViewController" customModule="TeacherTimeTracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController title="TimeEntries" id="vSb-Le-vDi" customClass="TabBarViewController" customModule="TeacherTimeTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="zO7-AP-jHi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -116,7 +130,7 @@
                 <navigationController title="Subjects" automaticallyAdjustsScrollViewInsets="NO" id="VuN-zQ-nNm" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Times" image="glyphicons-31-pencil" id="2VS-f7-q9J"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AGD-22-xIA">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" shadowImage="glyphicons-281-settings" id="AGD-22-xIA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

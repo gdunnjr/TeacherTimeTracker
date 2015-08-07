@@ -140,11 +140,11 @@ func GetRelationships() {
 // Code to add relationships - due to asynchrounous nature of the save and
 //  query calls, this can get tricky
 func AddRelationship() {
-    var subObj1 = PFObject(className:"subject")
+    var subObj1 = PFObject(className:"TestSubject")
     subObj1["subjectName"] = "Prog 900"
     subObj1.saveInBackground()
 
-    var subObj2 = PFObject(className:"subject")
+    var subObj2 = PFObject(className:"TestSubject")
     subObj2["subjectName"] = "Prog 901"
     subObj2.saveInBackground()
 
