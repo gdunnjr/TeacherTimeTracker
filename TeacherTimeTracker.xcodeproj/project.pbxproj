@@ -24,6 +24,7 @@
 		B8DDEA431B6FCCFA0020DF25 /* ParseFacebookUtilsV4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8DDEA421B6FCCFA0020DF25 /* ParseFacebookUtilsV4.framework */; };
 		B8DDEA451B6FCD000020DF25 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8DDEA441B6FCD000020DF25 /* ParseUI.framework */; };
 		B8DDEA471B6FD2FC0020DF25 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DDEA461B6FD2FC0020DF25 /* TabBarViewController.swift */; };
+		B8F288D41B74AEF100D1B552 /* ParseTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F288D31B74AEF100D1B552 /* ParseTesting.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		B8DDEA421B6FCCFA0020DF25 /* ParseFacebookUtilsV4.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseFacebookUtilsV4.framework; path = "../../../../Downloads/parse-library-1.7.5/ParseFacebookUtilsV4.framework"; sourceTree = "<group>"; };
 		B8DDEA441B6FCD000020DF25 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ParseUI.framework; path = "../../../../Downloads/parse-library-1.7.5/ParseUI.framework"; sourceTree = "<group>"; };
 		B8DDEA461B6FD2FC0020DF25 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = ../TabBarViewController.swift; sourceTree = "<group>"; };
+		B8F288D31B74AEF100D1B552 /* ParseTesting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseTesting.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 		B86EF3EC1B6E4691006FE66E = {
 			isa = PBXGroup;
 			children = (
+				B8F288D31B74AEF100D1B552 /* ParseTesting.swift */,
 				B86EF3F71B6E4691006FE66E /* TeacherTimeTracker */,
 				B86EF40D1B6E4691006FE66E /* TeacherTimeTrackerTests */,
 				B86EF3F61B6E4691006FE66E /* Products */,
@@ -267,6 +270,7 @@
 			files = (
 				B86EF3FD1B6E4691006FE66E /* ViewController.swift in Sources */,
 				B8DDEA471B6FD2FC0020DF25 /* TabBarViewController.swift in Sources */,
+				B8F288D41B74AEF100D1B552 /* ParseTesting.swift in Sources */,
 				B86EF3FB1B6E4691006FE66E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
