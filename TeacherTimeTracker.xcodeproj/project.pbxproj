@@ -26,6 +26,7 @@
 		B8DDEA471B6FD2FC0020DF25 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8DDEA461B6FD2FC0020DF25 /* TabBarViewController.swift */; };
 		B8F288D41B74AEF100D1B552 /* ParseTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F288D31B74AEF100D1B552 /* ParseTesting.swift */; };
 		B8F288D61B7535E900D1B552 /* TimeEntryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F288D51B7535E900D1B552 /* TimeEntryTableViewController.swift */; };
+		B8F288D81B76AD1200D1B552 /* TimeEntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F288D71B76AD1200D1B552 /* TimeEntryTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		B8DDEA461B6FD2FC0020DF25 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = ../TabBarViewController.swift; sourceTree = "<group>"; };
 		B8F288D31B74AEF100D1B552 /* ParseTesting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ParseTesting.swift; path = ../ParseTesting.swift; sourceTree = "<group>"; };
 		B8F288D51B7535E900D1B552 /* TimeEntryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeEntryTableViewController.swift; sourceTree = "<group>"; };
+		B8F288D71B76AD1200D1B552 /* TimeEntryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeEntryTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				B86EF3FA1B6E4691006FE66E /* AppDelegate.swift */,
 				B86EF3FC1B6E4691006FE66E /* ViewController.swift */,
 				B86EF3FE1B6E4691006FE66E /* Main.storyboard */,
+				B8F288D71B76AD1200D1B552 /* TimeEntryTableViewCell.swift */,
 				B8F288D51B7535E900D1B552 /* TimeEntryTableViewController.swift */,
 				B86EF4011B6E4691006FE66E /* Images.xcassets */,
 				B86EF4031B6E4691006FE66E /* LaunchScreen.xib */,
@@ -274,6 +277,7 @@
 				B8F288D61B7535E900D1B552 /* TimeEntryTableViewController.swift in Sources */,
 				B86EF3FD1B6E4691006FE66E /* ViewController.swift in Sources */,
 				B8DDEA471B6FD2FC0020DF25 /* TabBarViewController.swift in Sources */,
+				B8F288D81B76AD1200D1B552 /* TimeEntryTableViewCell.swift in Sources */,
 				B8F288D41B74AEF100D1B552 /* ParseTesting.swift in Sources */,
 				B86EF3FB1B6E4691006FE66E /* AppDelegate.swift in Sources */,
 			);

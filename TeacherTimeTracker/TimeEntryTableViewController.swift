@@ -10,7 +10,7 @@ import UIKit
 import Parse
 import ParseUI
 
-class TimeEntryTableViewController: PFQueryTableViewController {
+class TimeEntryTableViewController: PFQueryTableViewController , UITableViewDelegate{
     
     var sections = [String : Array<Int>]()
     var sectionToSportTypeMap = NSMutableDictionary()
@@ -39,15 +39,34 @@ class TimeEntryTableViewController: PFQueryTableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject) -> PFTableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as PFTableViewCell
+        //let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as PFTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as TimeEntryTableViewCell
+        var durationString = ""
+        if let durationPtr = object["duration"] as Int! {
+            durationString = String(durationPtr) + "min"
+        } else {
+            durationString = ""
+        }
+        
+        cell.hoursLabel?.text = durationString
         cell.detailTextLabel?.text = object["notes"] as String!
         if let pointer = object["subjectPtr"] as? PFObject {
             cell.textLabel?.text = pointer["subjectName"] as String!
         }
-        
+        cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         return cell
     }
-
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "timeEntrySegue" {
+        //    if let destination = segue.destinationViewController as? BlogViewController {
+        //        if let blogIndex = tableView.indexPathForSelectedRow()?.row {
+        //            destination.blogName = swiftBlogs[blogIndex]
+        //        }
+        //    }
+        }
+    }
+    
     override func objectsDidLoad(error: NSError!) {
         
         super.objectsDidLoad(error)
