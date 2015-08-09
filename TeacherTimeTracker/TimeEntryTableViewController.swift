@@ -30,6 +30,7 @@ class TimeEntryTableViewController: PFQueryTableViewController , UITableViewDele
         self.paginationEnabled = false
     }
     
+    
     // Define the query that will provide the data for the table view
     override func queryForTable() -> PFQuery {
         var query = PFQuery(className: "TimeEntry")
@@ -37,6 +38,25 @@ class TimeEntryTableViewController: PFQueryTableViewController , UITableViewDele
         query.includeKey("subjectPtr")
         return query
     }
+    
+  /* attempt to add a view above the table
+    override func scrollViewDidScroll(scrollView: UIScrollView){
+        let floatingView = UIView()
+
+        var frame: CGRect = floatingView.frame
+        frame.origin.y = scrollView.contentOffset.y
+        floatingView.frame = frame;
+        
+        let button   = UIButton.buttonWithType(UIButtonType.System) as UIButton
+        button.frame = CGRectMake(100, 100, 100, 50)
+        button.backgroundColor = UIColor.greenColor()
+        button.setTitle("Test Button", forState: UIControlState.Normal)
+        button.addTarget(self, action: "buttonAction:", forControlEvents: UIControlEvents.TouchUpInside)
+
+        floatingView.addSubview(button)
+        view.bringSubviewToFront(floatingView)
+    }
+*/
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject) -> PFTableViewCell {
         //let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as PFTableViewCell
@@ -59,13 +79,29 @@ class TimeEntryTableViewController: PFQueryTableViewController , UITableViewDele
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "timeEntrySegue" {
-        //    if let destination = segue.destinationViewController as? BlogViewController {
-        //        if let blogIndex = tableView.indexPathForSelectedRow()?.row {
-        //            destination.blogName = swiftBlogs[blogIndex]
-        //        }
-        //    }
+            if let destination = segue.destinationViewController as? TimeEntryDetailsViewController {
+                // Hide bottom tab bar in the detail view
+                destination.hidesBottomBarWhenPushed = true
+                if let obejctAtRow = tableView.indexPathForSelectedRow()?.row {
+                    //destination.notes = object["notes"] as String!
+                    //if let pointer = object["subjectPtr"] as? PFObject {
+                    //    destination.subjectName = pointer["subjectName"] as String!
+                    //}
+                    
+                    // Pass the selected object to the destination view controller.
+                    if let indexPath = self.tableView.indexPathForSelectedRow() {
+                        let row = Int(indexPath.row)
+                        destination.currentObject = (objects?[row] as PFObject)
+                    }
+                    
+                    
+                }
+            }
+        
+        
         }
     }
+    
     
     override func objectsDidLoad(error: NSError!) {
         
@@ -92,7 +128,7 @@ class TimeEntryTableViewController: PFQueryTableViewController , UITableViewDele
                 dateFormatter.dateFormat = "MM'/'dd'/'yyyy"
                 let origDate = dateFormatter.stringFromDate(startDateTime as NSDate)
                 println(origDate)
-                date = getDayOfWeek(origDate) + " " + date
+                //date = getDayOfWeek(origDate) + " " + date
                 
                 let dateFormatter2: NSDateFormatter = NSDateFormatter()
                 let months = dateFormatter2.shortMonthSymbols
@@ -152,7 +188,7 @@ class TimeEntryTableViewController: PFQueryTableViewController , UITableViewDele
         let sport = sportTypeForSection(section)
         return sport
     }
-
+/* This can be deleted
     func getDayOfWeek(today:String)->String {
         var weekDayName = ""
         let formatter  = NSDateFormatter()
@@ -187,7 +223,9 @@ class TimeEntryTableViewController: PFQueryTableViewController , UITableViewDele
             return ""
         }
     }
-
+*/
+   
+    
     override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         let header: UITableViewHeaderFooterView = view as UITableViewHeaderFooterView //recast your view as a UITableViewHeaderFooterView
         header.contentView.backgroundColor = UIColor(red: 0/255, green: 80/255, blue: 255/255, alpha: 1.0) //make the background color light blue

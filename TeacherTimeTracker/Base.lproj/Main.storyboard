@@ -70,25 +70,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="mfG-GD-EGT">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T8x-Rm-akM">
+                                    <rect key="frame" x="200" y="8" width="141" height="30"/>
+                                    <state key="normal" title="Add New Time Entry">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="749-fV-2FK" detailTextLabel="aZa-wj-d4c" rowHeight="91" style="IBUITableViewCellStyleSubtitle" id="lqd-CU-alo" customClass="TimeEntryTableViewCell" customModule="TeacherTimeTracker" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="peL-xM-RCy" detailTextLabel="H7t-Dk-fxN" rowHeight="91" style="IBUITableViewCellStyleSubtitle" id="lqd-CU-alo" customClass="TimeEntryTableViewCell" customModule="TeacherTimeTracker" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lqd-CU-alo" id="Qbm-4S-lKa">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="749-fV-2FK">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="peL-xM-RCy">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="217" translatesAutoresizingMaskIntoConstraints="NO" id="foc-nz-tqg">
-                                            <rect key="frame" x="303" y="6" width="76" height="33.5"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aZa-wj-d4c">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="H7t-Dk-fxN">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -97,7 +104,6 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="hoursLabel" destination="foc-nz-tqg" id="oMC-vH-3wl"/>
                                     <segue destination="WO5-tr-9Bh" kind="show" identifier="timeEntrySegue" id="bBR-DZ-9Bo"/>
                                 </connections>
                             </tableViewCell>
@@ -107,16 +113,18 @@
                             <outlet property="delegate" destination="Pag-Wl-f12" id="Inc-iU-rZu"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Time Entries" id="fVy-xb-xh5"/>
+                    <navigationItem key="navigationItem" title="Time Entries" id="fVy-xb-xh5">
+                        <barButtonItem key="rightBarButtonItem" title="New Entry" id="iTO-h5-I2l"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9cG-na-atg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="989" y="-745"/>
         </scene>
-        <!--TimeEntry-->
+        <!--TimeEntryDetails-->
         <scene sceneID="zTZ-57-LOu">
             <objects>
-                <viewController title="TimeEntry" id="WO5-tr-9Bh" sceneMemberID="viewController">
+                <viewController title="TimeEntryDetails" id="WO5-tr-9Bh" customClass="TimeEntryDetailsViewController" customModule="TeacherTimeTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1Kx-qP-sO2"/>
                         <viewControllerLayoutGuide type="bottom" id="JFq-h3-0k3"/>
@@ -134,6 +142,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="subjectLabel" destination="E71-7U-dPD" id="1vO-kH-JsT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cOA-H3-HuB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

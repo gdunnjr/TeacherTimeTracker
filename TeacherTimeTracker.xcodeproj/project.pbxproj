@@ -13,6 +13,7 @@
 		B86EF4021B6E4691006FE66E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B86EF4011B6E4691006FE66E /* Images.xcassets */; };
 		B86EF4051B6E4691006FE66E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B86EF4031B6E4691006FE66E /* LaunchScreen.xib */; };
 		B86EF4111B6E4691006FE66E /* TeacherTimeTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86EF4101B6E4691006FE66E /* TeacherTimeTrackerTests.swift */; };
+		B88D3B771B776B900061640E /* TimeEntryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88D3B761B776B900061640E /* TimeEntryDetailsViewController.swift */; };
 		B8DDEA1F1B6FC7DC0020DF25 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8DDEA1E1B6FC7DC0020DF25 /* Parse.framework */; };
 		B8DDEA221B6FC8890020DF25 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8DDEA211B6FC8890020DF25 /* AudioToolbox.framework */; };
 		B8DDEA341B6FC8DC0020DF25 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8DDEA331B6FC8DC0020DF25 /* SystemConfiguration.framework */; };
@@ -50,6 +51,7 @@
 		B86EF40A1B6E4691006FE66E /* TeacherTimeTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TeacherTimeTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B86EF40F1B6E4691006FE66E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B86EF4101B6E4691006FE66E /* TeacherTimeTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherTimeTrackerTests.swift; sourceTree = "<group>"; };
+		B88D3B761B776B900061640E /* TimeEntryDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeEntryDetailsViewController.swift; sourceTree = "<group>"; };
 		B8DDEA1E1B6FC7DC0020DF25 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = ../Parse.framework; sourceTree = "<group>"; };
 		B8DDEA211B6FC8890020DF25 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		B8DDEA331B6FC8DC0020DF25 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -116,14 +118,12 @@
 		B86EF3F71B6E4691006FE66E /* TeacherTimeTracker */ = {
 			isa = PBXGroup;
 			children = (
+				B88D3B751B776B240061640E /* Controllers */,
 				B8F288D31B74AEF100D1B552 /* ParseTesting.swift */,
-				B8DDEA461B6FD2FC0020DF25 /* TabBarViewController.swift */,
 				B8DDEA351B6FC9180020DF25 /* TeacherTimeTracker-Bridging-Header.h */,
 				B86EF3FA1B6E4691006FE66E /* AppDelegate.swift */,
 				B86EF3FC1B6E4691006FE66E /* ViewController.swift */,
 				B86EF3FE1B6E4691006FE66E /* Main.storyboard */,
-				B8F288D71B76AD1200D1B552 /* TimeEntryTableViewCell.swift */,
-				B8F288D51B7535E900D1B552 /* TimeEntryTableViewController.swift */,
 				B86EF4011B6E4691006FE66E /* Images.xcassets */,
 				B86EF4031B6E4691006FE66E /* LaunchScreen.xib */,
 				B8DDEA201B6FC7F50020DF25 /* Frameworks */,
@@ -155,6 +155,17 @@
 				B86EF40F1B6E4691006FE66E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B88D3B751B776B240061640E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B8DDEA461B6FD2FC0020DF25 /* TabBarViewController.swift */,
+				B8F288D71B76AD1200D1B552 /* TimeEntryTableViewCell.swift */,
+				B8F288D51B7535E900D1B552 /* TimeEntryTableViewController.swift */,
+				B88D3B761B776B900061640E /* TimeEntryDetailsViewController.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		B8DDEA201B6FC7F50020DF25 /* Frameworks */ = {
@@ -276,6 +287,7 @@
 			files = (
 				B8F288D61B7535E900D1B552 /* TimeEntryTableViewController.swift in Sources */,
 				B86EF3FD1B6E4691006FE66E /* ViewController.swift in Sources */,
+				B88D3B771B776B900061640E /* TimeEntryDetailsViewController.swift in Sources */,
 				B8DDEA471B6FD2FC0020DF25 /* TabBarViewController.swift in Sources */,
 				B8F288D81B76AD1200D1B552 /* TimeEntryTableViewCell.swift in Sources */,
 				B8F288D41B74AEF100D1B552 /* ParseTesting.swift in Sources */,
