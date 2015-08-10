@@ -84,26 +84,37 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="peL-xM-RCy" detailTextLabel="H7t-Dk-fxN" rowHeight="91" style="IBUITableViewCellStyleSubtitle" id="lqd-CU-alo" customClass="TimeEntryTableViewCell" customModule="TeacherTimeTracker" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="65" id="lqd-CU-alo" customClass="TimeEntryTableViewCell" customModule="TeacherTimeTracker" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lqd-CU-alo" id="Qbm-4S-lKa">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="peL-xM-RCy">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="751" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fRD-Tn-QNa">
+                                            <rect key="frame" x="30" y="8" width="431" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="H7t-Dk-fxN">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="SubTitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uoU-mI-9jy">
+                                            <rect key="frame" x="30" y="27.5" width="431" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="uoU-mI-9jy" firstAttribute="top" secondItem="fRD-Tn-QNa" secondAttribute="bottom" constant="-1" id="AOF-aH-89E"/>
+                                        <constraint firstItem="uoU-mI-9jy" firstAttribute="leading" secondItem="Qbm-4S-lKa" secondAttribute="leading" constant="30" id="Dt4-Gp-wBW"/>
+                                        <constraint firstAttribute="trailing" secondItem="uoU-mI-9jy" secondAttribute="trailing" constant="139" id="U0W-PU-6Jz"/>
+                                        <constraint firstAttribute="bottom" secondItem="uoU-mI-9jy" secondAttribute="bottom" constant="16" id="iV5-nZ-xwH"/>
+                                        <constraint firstItem="fRD-Tn-QNa" firstAttribute="leading" secondItem="Qbm-4S-lKa" secondAttribute="leading" constant="30" id="ns4-mB-JkL"/>
+                                        <constraint firstAttribute="trailing" secondItem="fRD-Tn-QNa" secondAttribute="trailing" constant="139" id="owo-Vj-4xZ"/>
+                                        <constraint firstItem="fRD-Tn-QNa" firstAttribute="top" secondItem="Qbm-4S-lKa" secondAttribute="top" constant="8" id="vFV-7F-Byf"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="subTitleLabel" destination="uoU-mI-9jy" id="NC8-4D-dg7"/>
+                                    <outlet property="titleLabel" destination="fRD-Tn-QNa" id="Q4g-If-3Vu"/>
                                     <segue destination="WO5-tr-9Bh" kind="show" identifier="timeEntrySegue" id="bBR-DZ-9Bo"/>
                                 </connections>
                             </tableViewCell>

@@ -11,7 +11,10 @@ import ParseUI
 import Parse
 
 class TimeEntryTableViewCell: PFTableViewCell {
+    @IBOutlet weak var labelDuration: UILabel!
 
+    @IBOutlet weak var subTitleLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var hoursLabel: UILabel!
     
     override func awakeFromNib() {

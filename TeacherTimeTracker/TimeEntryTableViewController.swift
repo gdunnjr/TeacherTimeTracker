@@ -68,10 +68,11 @@ class TimeEntryTableViewController: PFQueryTableViewController , UITableViewDele
             durationString = ""
         }
         
-        cell.hoursLabel?.text = durationString
-        cell.detailTextLabel?.text = object["notes"] as String!
+        cell.labelDuration?.text = durationString
+        cell.subTitleLabel?.text = object["notes"] as String!
         if let pointer = object["subjectPtr"] as? PFObject {
-            cell.textLabel?.text = pointer["subjectName"] as String!
+        //    cell.textLabel?.text = pointer["subjectName"] as String!
+            cell.titleLabel?.text = pointer["subjectName"] as String!
         }
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         return cell
