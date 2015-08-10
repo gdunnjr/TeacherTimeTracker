@@ -79,27 +79,31 @@ class TimeEntryTableViewController: PFQueryTableViewController , UITableViewDele
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "timeEntrySegue" {
-            if let destination = segue.destinationViewController as? TimeEntryDetailsViewController {
-                // Hide bottom tab bar in the detail view
-                destination.hidesBottomBarWhenPushed = true
-                if let obejctAtRow = tableView.indexPathForSelectedRow()?.row {
-                    //destination.notes = object["notes"] as String!
-                    //if let pointer = object["subjectPtr"] as? PFObject {
-                    //    destination.subjectName = pointer["subjectName"] as String!
-                    //}
-                    
-                    // Pass the selected object to the destination view controller.
-                    if let indexPath = self.tableView.indexPathForSelectedRow() {
-                        let row = Int(indexPath.row)
-                        destination.currentObject = (objects?[row] as PFObject)
+        switch segue.identifier! {
+            case "timeEntrySegue":
+                if let destination = segue.destinationViewController as? TimeEntryDetailsViewController {
+                    // Hide bottom tab bar in the detail view
+                    destination.hidesBottomBarWhenPushed = true
+                    if let obejctAtRow = tableView.indexPathForSelectedRow()?.row {
+                        //destination.notes = object["notes"] as String!
+                        //if let pointer = object["subjectPtr"] as? PFObject {
+                        //    destination.subjectName = pointer["subjectName"] as String!
+                        //}
+                        
+                        // Pass the selected object to the destination view controller.
+                        if let indexPath = self.tableView.indexPathForSelectedRow() {
+                            let row = Int(indexPath.row)
+                            destination.currentObject = (objects?[row] as PFObject)
+                        }
                     }
-                    
-                    
-                }
             }
         
-        
+        default:
+                if let destination = segue.destinationViewController as? TimeEntryInsertViewController {
+                    // Hide bottom tab bar in the detail view
+                    destination.hidesBottomBarWhenPushed = true
+                }
+
         }
     }
     

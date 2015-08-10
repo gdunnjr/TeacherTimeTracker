@@ -14,6 +14,7 @@
 		B86EF4051B6E4691006FE66E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B86EF4031B6E4691006FE66E /* LaunchScreen.xib */; };
 		B86EF4111B6E4691006FE66E /* TeacherTimeTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86EF4101B6E4691006FE66E /* TeacherTimeTrackerTests.swift */; };
 		B88D3B771B776B900061640E /* TimeEntryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88D3B761B776B900061640E /* TimeEntryDetailsViewController.swift */; };
+		B8B659B01B794AF400C75F9F /* TimeEntryInsertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B659AF1B794AF400C75F9F /* TimeEntryInsertViewController.swift */; };
 		B8DDEA1F1B6FC7DC0020DF25 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8DDEA1E1B6FC7DC0020DF25 /* Parse.framework */; };
 		B8DDEA221B6FC8890020DF25 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8DDEA211B6FC8890020DF25 /* AudioToolbox.framework */; };
 		B8DDEA341B6FC8DC0020DF25 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8DDEA331B6FC8DC0020DF25 /* SystemConfiguration.framework */; };
@@ -52,6 +53,7 @@
 		B86EF40F1B6E4691006FE66E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B86EF4101B6E4691006FE66E /* TeacherTimeTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeacherTimeTrackerTests.swift; sourceTree = "<group>"; };
 		B88D3B761B776B900061640E /* TimeEntryDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeEntryDetailsViewController.swift; sourceTree = "<group>"; };
+		B8B659AF1B794AF400C75F9F /* TimeEntryInsertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeEntryInsertViewController.swift; sourceTree = "<group>"; };
 		B8DDEA1E1B6FC7DC0020DF25 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = ../Parse.framework; sourceTree = "<group>"; };
 		B8DDEA211B6FC8890020DF25 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		B8DDEA331B6FC8DC0020DF25 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -161,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				B8DDEA461B6FD2FC0020DF25 /* TabBarViewController.swift */,
+				B8B659AF1B794AF400C75F9F /* TimeEntryInsertViewController.swift */,
 				B8F288D71B76AD1200D1B552 /* TimeEntryTableViewCell.swift */,
 				B8F288D51B7535E900D1B552 /* TimeEntryTableViewController.swift */,
 				B88D3B761B776B900061640E /* TimeEntryDetailsViewController.swift */,
@@ -288,6 +291,7 @@
 				B8F288D61B7535E900D1B552 /* TimeEntryTableViewController.swift in Sources */,
 				B86EF3FD1B6E4691006FE66E /* ViewController.swift in Sources */,
 				B88D3B771B776B900061640E /* TimeEntryDetailsViewController.swift in Sources */,
+				B8B659B01B794AF400C75F9F /* TimeEntryInsertViewController.swift in Sources */,
 				B8DDEA471B6FD2FC0020DF25 /* TabBarViewController.swift in Sources */,
 				B8F288D81B76AD1200D1B552 /* TimeEntryTableViewCell.swift in Sources */,
 				B8F288D41B74AEF100D1B552 /* ParseTesting.swift in Sources */,

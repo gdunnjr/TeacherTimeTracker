@@ -123,12 +123,42 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Time Entries" id="fVy-xb-xh5">
-                        <barButtonItem key="rightBarButtonItem" title="New Entry" id="iTO-h5-I2l"/>
+                        <barButtonItem key="rightBarButtonItem" title="New Entry" id="iTO-h5-I2l">
+                            <connections>
+                                <segue destination="d3a-z5-WHs" kind="show" identifier="newTimeEntrySegue" id="V0u-XZ-Hlr"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9cG-na-atg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="989" y="-745"/>
+        </scene>
+        <!--New Time Entry-->
+        <scene sceneID="IIN-p4-DMG">
+            <objects>
+                <viewController title="New Time Entry" id="d3a-z5-WHs" customClass="TimeEntryInsertViewController" customModule="TeacherTimeTracker" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XSH-T3-Be4"/>
+                        <viewControllerLayoutGuide type="bottom" id="qtU-0Y-1Fa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="f6y-8H-HLR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="New Time Entry" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ptS-tW-GWD">
+                                <rect key="frame" x="23" y="84" width="162" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BzJ-Cg-3cS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1834" y="-997"/>
         </scene>
         <!--TimeEntryDetails-->
         <scene sceneID="zTZ-57-LOu">
@@ -142,7 +172,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Subject" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E71-7U-dPD">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edit Time Entry" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E71-7U-dPD">
                                 <rect key="frame" x="59" y="72" width="105" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -157,7 +187,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cOA-H3-HuB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1649" y="-599"/>
+            <point key="canvasLocation" x="1662" y="-571"/>
         </scene>
         <!--TimeEntries-->
         <scene sceneID="45x-4F-67q">
