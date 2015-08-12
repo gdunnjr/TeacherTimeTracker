@@ -14,7 +14,7 @@ class TimeEntryTableViewController: PFQueryTableViewController , UITableViewDele
     
     var sections = [String : Array<Int>]()
     var sectionToSportTypeMap = NSMutableDictionary()
-   
+     
     // Initialise the PFQueryTable tableview
     override init(style: UITableViewStyle, className: String!) {
         super.init(style: style, className: className)
@@ -30,6 +30,13 @@ class TimeEntryTableViewController: PFQueryTableViewController , UITableViewDele
         self.paginationEnabled = false
     }
     
+    @IBAction func cancelInsertTimeEntry(segue:UIStoryboardSegue) {
+        
+    }
+    
+    @IBAction func saveInsertTimeEntry(segue:UIStoryboardSegue) {
+        
+    }
     
     // Define the query that will provide the data for the table view
     override func queryForTable() -> PFQuery {
@@ -99,9 +106,8 @@ class TimeEntryTableViewController: PFQueryTableViewController , UITableViewDele
             }
         
         default:
-                if let destination = segue.destinationViewController as? TimeEntryInsertViewController {
-                    // Hide bottom tab bar in the detail view
-                    destination.hidesBottomBarWhenPushed = true
+                if let destination = segue.destinationViewController as? TimeEntryInsertTableViewController {
+                    // nothing to do here consider removing the switch statement
                 }
 
         }
