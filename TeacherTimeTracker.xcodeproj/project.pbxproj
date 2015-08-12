@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B81C33611B7A561500688099 /* TimeEntryInsertTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81C33601B7A561500688099 /* TimeEntryInsertTableViewController.swift */; };
+		B81C33631B7BAC2A00688099 /* SubjectSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81C33621B7BAC2A00688099 /* SubjectSelectionTableViewController.swift */; };
 		B86EF3FB1B6E4691006FE66E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86EF3FA1B6E4691006FE66E /* AppDelegate.swift */; };
 		B86EF3FD1B6E4691006FE66E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86EF3FC1B6E4691006FE66E /* ViewController.swift */; };
 		B86EF4001B6E4691006FE66E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B86EF3FE1B6E4691006FE66E /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		B81C33601B7A561500688099 /* TimeEntryInsertTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeEntryInsertTableViewController.swift; sourceTree = "<group>"; };
+		B81C33621B7BAC2A00688099 /* SubjectSelectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectSelectionTableViewController.swift; sourceTree = "<group>"; };
 		B86EF3F51B6E4691006FE66E /* TeacherTimeTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeacherTimeTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B86EF3F91B6E4691006FE66E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B86EF3FA1B6E4691006FE66E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 		B88D3B751B776B240061640E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B81C33621B7BAC2A00688099 /* SubjectSelectionTableViewController.swift */,
 				B8DDEA461B6FD2FC0020DF25 /* TabBarViewController.swift */,
 				B8F288D71B76AD1200D1B552 /* TimeEntryTableViewCell.swift */,
 				B8F288D51B7535E900D1B552 /* TimeEntryTableViewController.swift */,
@@ -292,6 +295,7 @@
 				B86EF3FD1B6E4691006FE66E /* ViewController.swift in Sources */,
 				B88D3B771B776B900061640E /* TimeEntryDetailsViewController.swift in Sources */,
 				B8DDEA471B6FD2FC0020DF25 /* TabBarViewController.swift in Sources */,
+				B81C33631B7BAC2A00688099 /* SubjectSelectionTableViewController.swift in Sources */,
 				B81C33611B7A561500688099 /* TimeEntryInsertTableViewController.swift in Sources */,
 				B8F288D81B76AD1200D1B552 /* TimeEntryTableViewCell.swift in Sources */,
 				B8F288D41B74AEF100D1B552 /* ParseTesting.swift in Sources */,

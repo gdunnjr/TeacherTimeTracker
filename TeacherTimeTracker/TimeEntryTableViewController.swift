@@ -14,7 +14,8 @@ class TimeEntryTableViewController: PFQueryTableViewController , UITableViewDele
     
     var sections = [String : Array<Int>]()
     var sectionToSportTypeMap = NSMutableDictionary()
-     
+    
+
     // Initialise the PFQueryTable tableview
     override init(style: UITableViewStyle, className: String!) {
         super.init(style: style, className: className)

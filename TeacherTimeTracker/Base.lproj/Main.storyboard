@@ -78,7 +78,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="431" translatesAutoresizingMaskIntoConstraints="NO" id="fRD-Tn-QNa">
-                                            <rect key="frame" x="30" y="3" width="431" height="21"/>
+                                            <rect key="frame" x="30" y="3" width="431" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -163,32 +163,43 @@
             </objects>
             <point key="canvasLocation" x="1998" y="-87"/>
         </scene>
-        <!--Subject Selection-->
-        <scene sceneID="niG-qz-pJP">
+        <!--Subject Selection Table View-->
+        <scene sceneID="q8D-31-8J7">
             <objects>
-                <viewController title="Subject Selection" id="f57-fD-92v" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="h8C-qu-Ffb"/>
-                        <viewControllerLayoutGuide type="bottom" id="dxv-3Y-aa0"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="b96-Kl-J27">
+                <tableViewController title="Subject Selection Table View" id="9wl-qE-5Ri" customClass="SubjectSelectionTableViewController" customModule="TeacherTimeTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="P22-bY-hg2">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qp5-oe-CVR">
-                                <rect key="frame" x="76" y="143" width="313" height="162"/>
-                            </pickerView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Subject Area" id="3wE-1r-Al3">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="66R-3r-ce2"/>
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="dVT-X5-6wu"/>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cRH-xP-U6T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SubjectCell" textLabel="Hbs-iy-QaU" style="IBUITableViewCellStyleDefault" id="Zp1-i6-42v">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Zp1-i6-42v" id="btJ-1a-Acw">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hbs-iy-QaU">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="1zR-OX-hkP" kind="unwind" identifier="SaveSelectedSubject" unwindAction="selectedSubject:" id="gUD-zg-kcH"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="9wl-qE-5Ri" id="s4J-F3-hGG"/>
+                            <outlet property="delegate" destination="9wl-qE-5Ri" id="j7s-C0-y4k"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LmR-0Z-a90" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="1zR-OX-hkP" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3327" y="-407"/>
+            <point key="canvasLocation" x="2477" y="-1971"/>
         </scene>
         <!--Time Entry Insert TableView-->
         <scene sceneID="SNl-hu-IKI">
@@ -221,7 +232,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="0C7-mp-gDb" kind="presentation" id="Yli-ir-k4g"/>
+                                            <segue destination="9wl-qE-5Ri" kind="show" identifier="selectSubjectSegue" id="hOJ-Pj-o2x"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -279,11 +290,6 @@
                                                         <action selector="datePickerValueSelected:" destination="Fd9-bJ-oYD" eventType="valueChanged" id="dJQ-hy-ZQb"/>
                                                     </connections>
                                                 </datePicker>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PMA-uO-Hek">
-                                                    <rect key="frame" x="91" y="8" width="353" height="62"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -377,24 +383,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YgQ-54-F2V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1709" y="-1267"/>
-        </scene>
-        <!--Subject Area Selection Nav-->
-        <scene sceneID="MrJ-r4-oXG">
-            <objects>
-                <navigationController title="Subject Area Selection Nav" automaticallyAdjustsScrollViewInsets="NO" id="0C7-mp-gDb" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="82W-UQ-CGY">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="f57-fD-92v" kind="relationship" relationship="rootViewController" id="cbS-XB-tji"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZKd-ee-R2o" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3277" y="-1165"/>
         </scene>
     </scenes>
     <resources>

@@ -17,14 +17,28 @@ class TimeEntryInsertTableViewController: UITableViewController {
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var serviceDescTextBox: UITextField!
     var datePickerHidden = true
+    var subject:String = ""
+    
     
     @IBAction func datePickerValueSelected(sender: UIDatePicker) {
         datePickerChanged()
     }
+    
+    @IBAction func selectedSubject(segue:UIStoryboardSegue) {
+        if let subjectSelectionTableViewController = segue.sourceViewController as? SubjectSelectionTableViewController {
+        //selectedSubject = subjectSelectionTableViewController.selectedGame
+            let selectedSubject = subjectSelectionTableViewController.selectedSubject
+            detailLabel.text = selectedSubject
+            subject = selectedSubject!
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         datePickerChanged()
+        
+        detailLabel.text = subject
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
