@@ -17,7 +17,7 @@ class TimeEntryInsertTableViewController: UITableViewController {
     @IBOutlet weak var detailLabel: UILabel!
     @IBOutlet weak var serviceDescTextBox: UITextField!
     var datePickerHidden = true
-    var subject:String = ""
+    var subject:String = "N/A"
     
     
     @IBAction func datePickerValueSelected(sender: UIDatePicker) {
@@ -35,7 +35,7 @@ class TimeEntryInsertTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         datePickerChanged()
         
         detailLabel.text = subject
@@ -108,5 +108,13 @@ class TimeEntryInsertTableViewController: UITableViewController {
         tableView.beginUpdates()
         tableView.endUpdates()
         
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "selectSubjectSegue" {
+            if let subjectPickerViewController = segue.destinationViewController as? SubjectSelectionTableViewController {
+                subjectPickerViewController.selectedSubject = subject
+            }
+        }
     }
 }

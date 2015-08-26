@@ -7,16 +7,19 @@
 //
 
 import UIKit
+import Parse
 
 class SubjectSelectionTableViewController: UITableViewController {
     var subjects:[String]!
     var selectedSubject:String? = nil
     var selectedSubjectIndex:Int? = nil
+    var subjectArray:NSMutableArray = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        subjects = ["English","Math","Science","Social Studies"]
-        
+        //subjects = ["English","Math","Science","Social Studies"]
+        loadSubjectArray()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -41,12 +44,16 @@ class SubjectSelectionTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return subjects.count
+        return subjectArray.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("SubjectCell", forIndexPath: indexPath) as UITableViewCell
-        cell.textLabel?.text = subjects[indexPath.row]
+        //cell.textLabel?.text = subjects[indexPath.row]
+        //var subjectObject = subjectArray[indexPath.row] as PFObject
+        if let subjectObject = subjectArray[indexPath.row] as? PFObject {
+            cell.textLabel?.text = getSubjectName(subjectObject)
+        }
         
         if indexPath.row == selectedSubjectIndex {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
@@ -69,9 +76,11 @@ class SubjectSelectionTableViewController: UITableViewController {
         }
         
         selectedSubjectIndex = indexPath.row
-        selectedSubject = subjects[indexPath.row]
+        if let subjectObject = subjectArray[indexPath.row] as? PFObject {
+            selectedSubject = getSubjectName(subjectObject)
+        }
         
-        //update the checkmark for the current row
+      //update the checkmark for the current row
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         cell?.accessoryType = .Checkmark
     }
@@ -82,10 +91,64 @@ class SubjectSelectionTableViewController: UITableViewController {
                 let indexPath = tableView.indexPathForCell(cell)
                 selectedSubjectIndex = indexPath?.row
                 if let index = selectedSubjectIndex {
-                    selectedSubject = subjects[index]
+                    //selectedSubject = subjects[index]
+                    
+                   // var subjectObject = subjectArray[index] as PFObject
+                    if let subjectObject = subjectArray[index] as? PFObject {
+                        selectedSubject = getSubjectName(subjectObject)
+                    }
+                    
                 }
             }
         }
+    }
+    
+    func loadSubjectArray(){
+        //var query : PFQuery = PFUser.query()
+        var query = PFQuery(className: "Subject")
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                for object in objects {
+                    var mySubject = object as PFObject
+                    //println( object)
+                    println( mySubject)
+                    
+                    if let serviceTypeUnwrap = mySubject["subjecttName"] as? String {
+                        let mySubjectName = mySubject["subjecttName"] as String
+                        println(mySubjectName)
+                    }
+                    self.subjectArray.addObject(mySubject)
+                }
+                self.tableView.reloadData()
+            } else {
+                
+                // Log details of the failure
+                NSLog("Error: %@ %@", error, error.userInfo!)
+            }
+        }
+      /*
+        query.findObjectsInBackgroundWithBlock {
+            (objects:[AnyObject]!, error:NSError!) -> Void in
+            if error == nil {
+                if let objects = objects {
+                    for object in objects {
+                        //self.subjectArray.addObject(object)
+                    }
+                }
+            } else {
+                println("There was an error")
+            }
+        }
+*/
+    }
+    
+    func getSubjectName(subjectObject: PFObject) -> String {
+        var subjectName = ""
+        if let tmpSubjectName = subjectObject["subjectName"] as? String {
+            subjectName = tmpSubjectName
+        }
+        return subjectName
     }
     /*
     // Override to support conditional editing of the table view.
