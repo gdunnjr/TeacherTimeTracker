@@ -281,7 +281,7 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="V1A-AL-S7X">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="V1A-AL-S7X" userLabel="SubjectDetail">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
@@ -317,7 +317,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="6Cp-xA-DSL" kind="show" identifier="PickStudents" id="m6j-C6-2O8"/>
+                                            <segue destination="SMu-rO-efH" kind="show" identifier="PickStudents" id="m6j-C6-2O8"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -344,7 +344,8 @@
                     <connections>
                         <outlet property="datePicker" destination="L6J-ez-P9h" id="Yvq-Ie-dzs"/>
                         <outlet property="detailDateLabek" destination="kGG-fq-O9U" id="5DO-C3-Q1J"/>
-                        <outlet property="detailLabel" destination="V1A-AL-S7X" id="hdh-Zy-QJq"/>
+                        <outlet property="detailLabel" destination="JlH-5T-dKh" id="Yko-sc-2ok"/>
+                        <outlet property="detailSubjectLabel" destination="V1A-AL-S7X" id="drF-kB-oa4"/>
                         <outlet property="serviceDescTextBox" destination="qUt-Mh-5PA" id="FPE-9U-Z6q"/>
                     </connections>
                 </tableViewController>
@@ -382,10 +383,18 @@
                             <outlet property="delegate" destination="6Cp-xA-DSL" id="tjx-QD-blc"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="pST-RR-68O">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="ffA-Gw-jm0">
+                            <connections>
+                                <segue destination="rJA-Jq-iO4" kind="unwind" identifier="SaveSelectedStudents" unwindAction="saveSelectedStudents:" id="fqO-SD-Tv9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G5g-KB-sBY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="rJA-Jq-iO4" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3149" y="-805"/>
+            <point key="canvasLocation" x="3961" y="-805"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="45x-4F-67q">
@@ -444,6 +453,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YgQ-54-F2V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1709" y="-1267"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="o5f-pN-Xrp">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SMu-rO-efH" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3ph-Wc-oUP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="6Cp-xA-DSL" kind="relationship" relationship="rootViewController" id="e1L-je-yCL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="shk-GW-y2o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3161" y="-483"/>
         </scene>
     </scenes>
     <resources>

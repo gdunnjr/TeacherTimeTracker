@@ -10,6 +10,8 @@
 		B81C33611B7A561500688099 /* TimeEntryInsertTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81C33601B7A561500688099 /* TimeEntryInsertTableViewController.swift */; };
 		B81C33631B7BAC2A00688099 /* SubjectSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81C33621B7BAC2A00688099 /* SubjectSelectionTableViewController.swift */; };
 		B81C33651B9F4B2500688099 /* StudentsSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81C33641B9F4B2500688099 /* StudentsSelectionTableViewController.swift */; };
+		B83D71C71BB825CD00776D62 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B83D71C51BB825CD00776D62 /* Fabric.framework */; };
+		B83D71C81BB825CD00776D62 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B83D71C61BB825CD00776D62 /* Crashlytics.framework */; };
 		B86EF3FB1B6E4691006FE66E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86EF3FA1B6E4691006FE66E /* AppDelegate.swift */; };
 		B86EF3FD1B6E4691006FE66E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86EF3FC1B6E4691006FE66E /* ViewController.swift */; };
 		B86EF4001B6E4691006FE66E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B86EF3FE1B6E4691006FE66E /* Main.storyboard */; };
@@ -47,6 +49,8 @@
 		B81C33601B7A561500688099 /* TimeEntryInsertTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeEntryInsertTableViewController.swift; sourceTree = "<group>"; };
 		B81C33621B7BAC2A00688099 /* SubjectSelectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectSelectionTableViewController.swift; sourceTree = "<group>"; };
 		B81C33641B9F4B2500688099 /* StudentsSelectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentsSelectionTableViewController.swift; sourceTree = "<group>"; };
+		B83D71C51BB825CD00776D62 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
+		B83D71C61BB825CD00776D62 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		B86EF3F51B6E4691006FE66E /* TeacherTimeTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeacherTimeTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B86EF3F91B6E4691006FE66E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B86EF3FA1B6E4691006FE66E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +94,8 @@
 				B8DDEA431B6FCCFA0020DF25 /* ParseFacebookUtilsV4.framework in Frameworks */,
 				B8DDEA411B6FCCF30020DF25 /* ParseFacebookUtils.framework in Frameworks */,
 				B8DDEA3D1B6FCCDB0020DF25 /* Bolts.framework in Frameworks */,
+				B83D71C81BB825CD00776D62 /* Crashlytics.framework in Frameworks */,
+				B83D71C71BB825CD00776D62 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,6 +186,8 @@
 		B8DDEA201B6FC7F50020DF25 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B83D71C51BB825CD00776D62 /* Fabric.framework */,
+				B83D71C61BB825CD00776D62 /* Crashlytics.framework */,
 				B8DDEA381B6FCC220020DF25 /* libsqlite3.dylib */,
 				B8DDEA3A1B6FCC520020DF25 /* libstdc++.6.dylib */,
 				B8DDEA441B6FCD000020DF25 /* ParseUI.framework */,
@@ -204,6 +212,7 @@
 				B86EF3F11B6E4691006FE66E /* Sources */,
 				B86EF3F21B6E4691006FE66E /* Frameworks */,
 				B86EF3F31B6E4691006FE66E /* Resources */,
+				B83D71C41BB8259100776D62 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -288,6 +297,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B83D71C41BB8259100776D62 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Fabric.framework/run 56455e798b1e6211001b2bffcdc3c6d67f0a0f46 69cb115cc76d4efe3c7ca8daf641d2c2b64df0909c08365240992ab82e07bbcc";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B86EF3F11B6E4691006FE66E /* Sources */ = {

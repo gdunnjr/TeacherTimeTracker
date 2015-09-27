@@ -82,7 +82,7 @@ class StudentsSelectionTableViewController: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "SaveSelectedStudent" {
+        if segue.identifier == "SaveSelectedStudents" {
             if let cell = sender as? UITableViewCell {
                 let indexPath = tableView.indexPathForCell(cell)
                 selectedStudentIndex = indexPath?.row
