@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import Parse
 
 class StudentsSelectionTableViewController: UITableViewController {
-
+    var students:[String]!
+    var selectedStudent:String? = nil
+    var selectedStudentIndex:Int? = nil
+    var studentArray:NSMutableArray = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        loadStudentArray()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -30,14 +35,104 @@ class StudentsSelectionTableViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 0
+        return studentArray.count
     }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("StudentCell", forIndexPath: indexPath) as UITableViewCell
+        if let studentObject = studentArray[indexPath.row] as? PFObject {
+            cell.textLabel?.text = getStudentName(studentObject)
+        }
+        
+        if indexPath.row == selectedStudentIndex {
+            cell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        } else {
+            cell.accessoryType = .None
+        }
+        
+        // Configure the cell...
+        
+        return cell
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+  /*      //Other row is selected - need to deselect it
+        if let index = selectedStudentIndex {
+            let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0))
+            cell?.accessoryType = .None
+        }
+  */
+    
+        selectedStudentIndex = indexPath.row
+        if let studentObject = studentArray[indexPath.row] as? PFObject {
+            selectedStudent = getStudentName(studentObject)
+        }
+        
+        //update the checkmark for the current row
+        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        cell?.accessoryType = .Checkmark
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "SaveSelectedStudent" {
+            if let cell = sender as? UITableViewCell {
+                let indexPath = tableView.indexPathForCell(cell)
+                selectedStudentIndex = indexPath?.row
+                if let index = selectedStudentIndex {
+                    //selectedStudent = students[index]
+                    
+                    // var studentObject = studentArray[index] as PFObject
+                    if let studentObject = studentArray[index] as? PFObject {
+                        selectedStudent = getStudentName(studentObject)
+                    }
+                    
+                }
+            }
+        }
+    }
+    
+    func getStudentName(studentObject: PFObject) -> String {
+        var studentName = ""
+        if let tmpStudentName = studentObject["studentName"] as? String {
+            studentName = tmpStudentName
+        }
+        return studentName
+    }
+    
+    func loadStudentArray(){
+        //var query : PFQuery = PFUser.query()
+        var query = PFQuery(className: "Student")
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                for object in objects {
+                    var myStudent = object as PFObject
+                    //println( object)
+                    println( myStudent)
+                    
+                    if let serviceTypeUnwrap = myStudent["studentName"] as? String {
+                        let myStudentName = myStudent["studentName"] as String
+                        println(myStudentName)
+                    }
+                    self.studentArray.addObject(myStudent)
+                }
+                self.tableView.reloadData()
+            } else {
+                
+                // Log details of the failure
+                NSLog("Error: %@ %@", error, error.userInfo!)
+            }
+        }
+    }
+
 
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
