@@ -14,6 +14,7 @@ class StudentsSelectionTableViewController: UITableViewController {
     var selectedStudent:String? = nil
     var selectedStudentIndex:Int? = nil
     var studentArray:NSMutableArray = []
+   // var selectedStudentArray
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,6 +84,27 @@ class StudentsSelectionTableViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "SaveSelectedStudents" {
+            selectedStudent = ""
+            for (var row = 0; row < tableView.numberOfRowsInSection(0); row++) {
+                var cell:UITableViewCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: 0))!
+                let indexPath = tableView.indexPathForCell(cell)
+                selectedStudentIndex = indexPath?.row
+                if let index = selectedStudentIndex {
+                    
+                    
+                    // var studentObject = studentArray[index] as PFObject
+                    if let studentObject = studentArray[index] as? PFObject {
+                        if (selectedStudent != "") {
+                            selectedStudent = selectedStudent! + ", "
+                        }
+                        selectedStudent = selectedStudent! + getStudentName(studentObject)
+                    }
+                    
+                }
+            }
+            
+            
+         /*
             if let cell = sender as? UITableViewCell {
                 let indexPath = tableView.indexPathForCell(cell)
                 selectedStudentIndex = indexPath?.row
@@ -96,6 +118,7 @@ class StudentsSelectionTableViewController: UITableViewController {
                     
                 }
             }
+*/
         }
     }
     

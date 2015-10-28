@@ -19,6 +19,7 @@ class TimeEntryInsertTableViewController: UITableViewController {
     var datePickerHidden = true
     var subject:String = "N/A"
     var student:String = "N/A"
+    var selectedSubjectObject : PFObject! = nil
     
     @IBOutlet weak var detailSubjectLabel: UILabel!
     
@@ -33,6 +34,7 @@ class TimeEntryInsertTableViewController: UITableViewController {
             //detailLabel.text = selectedSubject
             detailSubjectLabel.text = selectedSubject
             subject = selectedSubject!
+            selectedSubjectObject = subjectSelectionTableViewController.selectedSubjectObject
         }
     }
     
@@ -128,5 +130,32 @@ class TimeEntryInsertTableViewController: UITableViewController {
                 subjectPickerViewController.selectedSubject = subject
             }
         }
+        if segue.identifier == "saveInsertTimeEntry" {
+            //if let subjectPickerViewController = segue.destinationViewController as? SubjectSelectionTableViewController {
+                //subjectPickerViewController.selectedSubject = subject
+            //}
+            let x="x"
+            println(datePicker.date)
+            
+            var object = PFObject(className:"TimeEntry")
+            object["startDateTime"] = datePicker.date
+            object["endDateTime"] = datePicker.date
+            object["subjectPtr"] = selectedSubjectObject
+            
+            //var relation = object.relationForKey("subjectPtr")
+            //relation.addObject(selectedSubjectObject)
+            
+            object.saveInBackgroundWithBlock {
+                (success: Bool!, error: NSError!) -> Void in
+                if (success != nil) {
+                    println("Saved")
+                } else {
+                    println("%@", error)
+                }
+            }
+
+            
+        }
+        
     }
 }

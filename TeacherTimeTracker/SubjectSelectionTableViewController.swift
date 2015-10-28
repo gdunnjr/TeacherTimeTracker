@@ -14,6 +14,7 @@ class SubjectSelectionTableViewController: UITableViewController {
     var selectedSubject:String? = nil
     var selectedSubjectIndex:Int? = nil
     var subjectArray:NSMutableArray = []
+    var selectedSubjectObject:PFObject! = nil
     
     
     override func viewDidLoad() {
@@ -94,8 +95,9 @@ class SubjectSelectionTableViewController: UITableViewController {
                     //selectedSubject = subjects[index]
                     
                    // var subjectObject = subjectArray[index] as PFObject
-                    if let subjectObject = subjectArray[index] as? PFObject {
-                        selectedSubject = getSubjectName(subjectObject)
+                    if let mySubjectObject = subjectArray[index] as? PFObject {
+                        selectedSubject = getSubjectName(mySubjectObject)
+                        selectedSubjectObject = mySubjectObject
                     }
                     
                 }

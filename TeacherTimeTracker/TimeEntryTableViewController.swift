@@ -15,6 +15,12 @@ class TimeEntryTableViewController: PFQueryTableViewController , UITableViewDele
     var sections = [String : Array<Int>]()
     var sectionToSportTypeMap = NSMutableDictionary()
     
+    struct TableItem {
+        let notes: String
+        let subject: String
+        let duration: String
+    }
+    var rowSections = Dictionary<String, Array<TableItem>>()
 
     // Initialise the PFQueryTable tableview
     override init(style: UITableViewStyle, className: String!) {
@@ -42,7 +48,7 @@ class TimeEntryTableViewController: PFQueryTableViewController , UITableViewDele
     // Define the query that will provide the data for the table view
     override func queryForTable() -> PFQuery {
         var query = PFQuery(className: "TimeEntry")
-        query.orderByAscending("startDateTime")
+        query.orderByDescending("startDateTime")
         query.includeKey("subjectPtr")
         return query
     }
@@ -66,9 +72,28 @@ class TimeEntryTableViewController: PFQueryTableViewController , UITableViewDele
     }
 */
     
+    
+    override func objectAtIndexPath(indexPath: NSIndexPath!) -> PFObject? {
+        var obj : PFObject? = nil
+        if(indexPath.row < self.objects!.count){
+            obj = self.objects?[indexPath.row] as? PFObject
+            //println(obj["notes"] as String!)
+            
+        }
+        
+        return obj
+    }
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath, object: PFObject) -> PFTableViewCell {
         //let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as PFTableViewCell
+     
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as TimeEntryTableViewCell
+        
+        //let  cell = tableView[cellForNextPageAtIndexPath:indexPath] as TimeEntryTableViewCell
+    
+        println(object["notes"] as String!)
+        println(indexPath.row)
+        
         var durationString = ""
         if let durationPtr = object["duration"] as Int! {
             durationString = String(durationPtr) + "min"
@@ -82,6 +107,15 @@ class TimeEntryTableViewController: PFQueryTableViewController , UITableViewDele
         //    cell.textLabel?.text = pointer["subjectName"] as String!
             cell.titleLabel?.text = pointer["subjectName"] as String!
         }
+        //
+        //let sectionDate = sportTypeForSection(section) as String!
+        
+        let tableSection = rowSections[sportTypeForSection(indexPath.section)]
+        let tableItem = tableSection![indexPath.row]
+        cell.labelDuration?.text = tableItem.duration
+        cell.titleLabel?.text = tableItem.subject
+        cell.subTitleLabel?.text = tableItem.notes
+        println(tableItem.subject)
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         return cell
     }
@@ -114,21 +148,12 @@ class TimeEntryTableViewController: PFQueryTableViewController , UITableViewDele
         }
     }
     
-    
     override func objectsDidLoad(error: NSError!) {
-        
         super.objectsDidLoad(error)
-        
         sections.removeAll(keepCapacity: false)
         sectionToSportTypeMap.removeAllObjects()
-        
-    
         var section = 0
-
         var rowIndex = 0
-        
-        
-        
         for object in objects {
             println(object)
             println(object["startDateTime"])
@@ -163,13 +188,40 @@ class TimeEntryTableViewController: PFQueryTableViewController , UITableViewDele
             
             let sport = date
             var objectsInSection = sections[sport]
+           
+            var durationString = ""
+            if let durationPtr = object["duration"] as Int! {
+                durationString = String(durationPtr) + "min"
+            } else {
+                durationString = ""
+            }
+            
+            var objSubject = ""
+            if let pointer = object["subjectPtr"] as? PFObject {
+                    //cell.textLabel?.text = pointer["subjectName"] as String!
+                objSubject = pointer["subjectName"] as String!
+            }
+            println(objSubject)
+            
+            var objNotes = ""
+            if let objNotes = object["notes"] as? PFObject{
+                var objNotes = object["notes"] as String!
+            }
+            
+            
+            //let objNotes = ""
             
             if (objectsInSection == nil) {
-                
+
                 objectsInSection = Array<Int>()
                 
                 sectionToSportTypeMap[section++] = sport
-                
+
+                self.rowSections[date] = [TableItem(notes: objNotes, subject: objSubject, duration: durationString)]
+            } else
+            
+            {
+            self.rowSections[date]!.append(TableItem(notes: objNotes, subject: objSubject, duration: durationString))
             }
             
             objectsInSection?.append(rowIndex++)
