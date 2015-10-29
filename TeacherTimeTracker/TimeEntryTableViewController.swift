@@ -102,7 +102,7 @@ class TimeEntryTableViewController: PFQueryTableViewController , UITableViewDele
         }
         
         cell.labelDuration?.text = durationString
-        cell.subTitleLabel?.text = object["notes"] as String!
+        //cell.subTitleLabel?.text = object["notes"] as String!
         if let pointer = object["subjectPtr"] as? PFObject {
         //    cell.textLabel?.text = pointer["subjectName"] as String!
             cell.titleLabel?.text = pointer["subjectName"] as String!
@@ -114,7 +114,7 @@ class TimeEntryTableViewController: PFQueryTableViewController , UITableViewDele
         let tableItem = tableSection![indexPath.row]
         cell.labelDuration?.text = tableItem.duration
         cell.titleLabel?.text = tableItem.subject
-        cell.subTitleLabel?.text = tableItem.notes
+        //cell.subTitleLabel?.text = tableItem.notes
         println(tableItem.subject)
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         return cell
