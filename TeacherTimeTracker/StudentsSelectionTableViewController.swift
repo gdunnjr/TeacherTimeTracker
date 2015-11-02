@@ -14,11 +14,17 @@ class StudentsSelectionTableViewController: UITableViewController {
     var selectedStudent:String? = nil
     var selectedStudentIndex:Int? = nil
     var studentArray:NSMutableArray = []
+    var selectedStudents:[String] = []
+    
    // var selectedStudentArray
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //selectedStudents.append("Y")
         loadStudentArray()
+        
+        // Do while all selected rows are deleted
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -47,11 +53,12 @@ class StudentsSelectionTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("StudentCell", forIndexPath: indexPath) as UITableViewCell
+        
         if let studentObject = studentArray[indexPath.row] as? PFObject {
             cell.textLabel?.text = getStudentName(studentObject)
         }
         
-        if indexPath.row == selectedStudentIndex {
+        if selectedStudents[indexPath.row]=="Y" {
             cell.accessoryType = UITableViewCellAccessoryType.Checkmark
         } else {
             cell.accessoryType = .None
@@ -63,62 +70,39 @@ class StudentsSelectionTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+      
+        //selectedStudentIndex = indexPath.row
+        //if let studentObject = studentArray[indexPath.row] as? PFObject {
+        //    selectedStudent = getStudentName(studentObject)
+        //}
         
-  /*      //Other row is selected - need to deselect it
-        if let index = selectedStudentIndex {
-            let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0))
-            cell?.accessoryType = .None
-        }
-  */
-    
-        selectedStudentIndex = indexPath.row
-        if let studentObject = studentArray[indexPath.row] as? PFObject {
-            selectedStudent = getStudentName(studentObject)
-        }
+        selectedStudents[indexPath.row] = "Y"
         
         //update the checkmark for the current row
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         cell?.accessoryType = .Checkmark
+        
+        println(cell?.detailTextLabel)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "SaveSelectedStudents" {
             selectedStudent = ""
-            for (var row = 0; row < tableView.numberOfRowsInSection(0); row++) {
-                var cell:UITableViewCell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: row, inSection: 0))!
-                let indexPath = tableView.indexPathForCell(cell)
-                selectedStudentIndex = indexPath?.row
-                if let index = selectedStudentIndex {
-                    
-                    
-                    // var studentObject = studentArray[index] as PFObject
-                    if let studentObject = studentArray[index] as? PFObject {
+            //if let indexPaths = tableView.indexPathsForSelectedRows() {
+                // Do while all selected rows are deleted
+            for (var i = 0; i < tableView.numberOfRowsInSection(0); i++) {
+                    if selectedStudents[i]=="Y" {
+                    if let studentObject = studentArray[i] as? PFObject {
                         if (selectedStudent != "") {
-                            selectedStudent = selectedStudent! + ", "
+                            selectedStudent = selectedStudent! + ", " + getStudentName(studentObject)
+                        } else {
+                            selectedStudent = getStudentName(studentObject)
                         }
-                        selectedStudent = selectedStudent! + getStudentName(studentObject)
                     }
-                    
                 }
+                
             }
             
-            
-         /*
-            if let cell = sender as? UITableViewCell {
-                let indexPath = tableView.indexPathForCell(cell)
-                selectedStudentIndex = indexPath?.row
-                if let index = selectedStudentIndex {
-                    //selectedStudent = students[index]
-                    
-                    // var studentObject = studentArray[index] as PFObject
-                    if let studentObject = studentArray[index] as? PFObject {
-                        selectedStudent = getStudentName(studentObject)
-                    }
-                    
-                }
-            }
-*/
         }
     }
     
@@ -146,7 +130,10 @@ class StudentsSelectionTableViewController: UITableViewController {
                         println(myStudentName)
                     }
                     self.studentArray.addObject(myStudent)
+                    self.selectedStudents.append("N")
+                    println(self.selectedStudents.count)
                 }
+                
                 self.tableView.reloadData()
             } else {
                 

@@ -16,11 +16,15 @@ class SubjectSelectionTableViewController: UITableViewController {
     var subjectArray:NSMutableArray = []
     var selectedSubjectObject:PFObject! = nil
     
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+    var indicator:UIActivityIndicatorView = UIActivityIndicatorView  (activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //subjects = ["English","Math","Science","Social Studies"]
         loadSubjectArray()
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -106,6 +110,13 @@ class SubjectSelectionTableViewController: UITableViewController {
     }
     
     func loadSubjectArray(){
+
+        indicator.color = UIColor .blackColor()
+        indicator.center = self.view.center
+        self.view.addSubview(indicator)
+        indicator.bringSubviewToFront(self.view)
+        indicator.startAnimating()
+        
         //var query : PFQuery = PFUser.query()
         var query = PFQuery(className: "Subject")
         query.findObjectsInBackgroundWithBlock {
@@ -123,7 +134,10 @@ class SubjectSelectionTableViewController: UITableViewController {
                     self.subjectArray.addObject(mySubject)
                 }
                 self.tableView.reloadData()
+                self.indicator.stopAnimating()
+
             } else {
+               self.indicator.stopAnimating()
                 
                 // Log details of the failure
                 NSLog("Error: %@ %@", error, error.userInfo!)

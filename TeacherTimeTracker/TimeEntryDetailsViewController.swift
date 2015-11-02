@@ -25,7 +25,6 @@ class TimeEntryDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        subjectLabel.text = currentObject["notes"] as String!
     }
 
     override func didReceiveMemoryWarning() {
