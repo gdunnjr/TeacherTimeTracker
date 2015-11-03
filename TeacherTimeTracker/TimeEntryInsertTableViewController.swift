@@ -69,7 +69,7 @@ class TimeEntryInsertTableViewController: UITableViewController {
         if indexPath.section == 0 {
             serviceDescTextBox.becomeFirstResponder()
         }
-        if indexPath.section == 2 && indexPath.row == 0 {
+        if indexPath.section == 1 && indexPath.row == 0 {
             toggleDatepicker()
         }
     }
@@ -86,11 +86,11 @@ class TimeEntryInsertTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if datePickerHidden && indexPath.section == 2 && indexPath.row == 1 {
+        if datePickerHidden && indexPath.section == 1 && indexPath.row == 1 {
             return 0
-            
-        }
+            }
         else {
+            println(indexPath.section)
             return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
         }
     }
@@ -111,7 +111,7 @@ class TimeEntryInsertTableViewController: UITableViewController {
         datePickerHidden = !datePickerHidden
         //datePicker.hidden = datePickerHidden
         
-        var cell3Index = NSIndexPath.init(forRow: 1, inSection: 2)
+        var cell3Index = NSIndexPath.init(forRow: 1, inSection: 1)
         var quantityCell = self.tableView.cellForRowAtIndexPath(cell3Index)
         if datePickerHidden {
             quantityCell?.hidden = true
