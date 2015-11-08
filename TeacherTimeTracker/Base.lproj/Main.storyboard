@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Students-->
@@ -266,6 +267,49 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Duration" id="jWl-Fj-kFU">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="RFs-Ci-zyn">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RFs-Ci-zyn" id="ZBX-N7-RtK">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="15" minValue="0.0" maxValue="75" translatesAutoresizingMaskIntoConstraints="NO" id="HmG-OD-cdP">
+                                                    <rect key="frame" x="18" y="7" width="261" height="31"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="257" id="oK1-1K-cqt"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <action selector="sliderValueChanged:" destination="Fd9-bJ-oYD" eventType="valueChanged" id="OdZ-47-4f4"/>
+                                                    </connections>
+                                                </slider>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EYn-zD-PsF">
+                                                    <rect key="frame" x="543" y="11" width="42" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="42" id="TAB-fM-uy9"/>
+                                                        <constraint firstAttribute="height" constant="21" id="s5J-h7-QBs"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="EYn-zD-PsF" firstAttribute="top" secondItem="ZBX-N7-RtK" secondAttribute="topMargin" constant="3" id="0yR-z9-JMN"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="EYn-zD-PsF" secondAttribute="trailing" constant="7" id="AXZ-yg-535"/>
+                                                <constraint firstItem="EYn-zD-PsF" firstAttribute="leading" secondItem="HmG-OD-cdP" secondAttribute="trailing" constant="298" id="hsS-vE-wnP"/>
+                                                <constraint firstItem="HmG-OD-cdP" firstAttribute="leading" secondItem="ZBX-N7-RtK" secondAttribute="leadingMargin" constant="12" id="mKL-Az-2G3"/>
+                                                <constraint firstItem="HmG-OD-cdP" firstAttribute="top" secondItem="ZBX-N7-RtK" secondAttribute="topMargin" constant="-1" id="r8j-z6-KT7"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="hsS-vE-wnP"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection headerTitle="Subject" id="5PZ-xa-hWh">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="PzN-Bi-Q52" detailTextLabel="V1A-AL-S7X" style="IBUITableViewCellStyleValue1" id="qqe-I1-zka">
@@ -320,30 +364,6 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Students" id="jWl-Fj-kFU">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="VvM-32-NYU" detailTextLabel="f4c-wI-GQV" style="IBUITableViewCellStyleValue1" id="RFs-Ci-zyn">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RFs-Ci-zyn" id="ZBX-N7-RtK">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Students" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VvM-32-NYU">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="f4c-wI-GQV">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="Fd9-bJ-oYD" id="LbL-xR-iZU"/>
@@ -364,6 +384,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="LabelSlider" destination="EYn-zD-PsF" id="62p-8H-KkE"/>
+                        <outlet property="SliderDuration" destination="HmG-OD-cdP" id="7B0-tz-Und"/>
                         <outlet property="datePicker" destination="L6J-ez-P9h" id="Yvq-Ie-dzs"/>
                         <outlet property="detailDateLabek" destination="kGG-fq-O9U" id="5DO-C3-Q1J"/>
                         <outlet property="detailLabel" destination="JlH-5T-dKh" id="Yko-sc-2ok"/>

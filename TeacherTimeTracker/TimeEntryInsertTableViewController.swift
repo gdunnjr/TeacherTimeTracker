@@ -27,6 +27,8 @@ class TimeEntryInsertTableViewController: UITableViewController {
         datePickerChanged()
     }
     
+    @IBOutlet weak var SliderDuration: UISlider!
+    @IBOutlet weak var LabelSlider: UILabel!
     @IBAction func selectedSubject(segue:UIStoryboardSegue) {
         if let subjectSelectionTableViewController = segue.sourceViewController as? SubjectSelectionTableViewController {
         //selectedSubject = subjectSelectionTableViewController.selectedGame
@@ -45,6 +47,14 @@ class TimeEntryInsertTableViewController: UITableViewController {
             student = selectedStudent!
         }
     }
+    
+    
+    @IBAction func sliderValueChanged(sender: UISlider) {
+        var currentValue = Int(sender.value)
+        
+        LabelSlider.text = "\(currentValue)"
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -158,4 +168,6 @@ class TimeEntryInsertTableViewController: UITableViewController {
         }
         
     }
+    
+    
 }
