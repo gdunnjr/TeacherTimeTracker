@@ -98,7 +98,7 @@ func getTestSubject(
 // Example of how to iterate over relationships
 func GetRelationships() {
     var testQuery = PFQuery(className: "TestObject")
-    testQuery.whereKey("foo", equalTo: "Test Me New 92")
+    testQuery.whereKey("foo", equalTo: "Test Me New 999")
     testQuery.findObjectsInBackgroundWithBlock {
         (objects: [AnyObject]!, error: NSError!) -> Void in
         if error == nil {
@@ -136,25 +136,24 @@ func GetRelationships() {
     }
 }
 
-
 // Code to add relationships - due to asynchrounous nature of the save and
 //  query calls, this can get tricky
-func AddRelationship() {
+func AddRelationshipTest() {
     var subObj1 = PFObject(className:"TestSubject")
     subObj1["subjectName"] = "Prog 900"
     subObj1.saveInBackground()
-
+    
     var subObj2 = PFObject(className:"TestSubject")
     subObj2["subjectName"] = "Prog 901"
     subObj2.saveInBackground()
-
-
+    
+    
     var testObject = PFObject(className:"TestObject")
-    testObject["foo"] = "Test Me New 3"
+    testObject["foo"] = "Test Me New 999"
     testObject.saveInBackground()
-
+    
     var testQuery = PFQuery(className: "TestObject")
-    testQuery.whereKey("foo", equalTo: "Test Me New 3")
+    testQuery.whereKey("foo", equalTo: "Test Me New 999")
     testQuery.findObjectsInBackgroundWithBlock {
         (objects: [AnyObject]!, error: NSError!) -> Void in
         if error == nil {
@@ -165,7 +164,69 @@ func AddRelationship() {
                 let myPFObject = object as PFObject
                 var relation = object.relationForKey("subjectPtr")
                 relation.addObject(subObj1)
-                relation.addObject(subObj2)
+              //  relation.addObject(subObj2)
+                myPFObject.saveInBackgroundWithBlock {
+                    (success: Bool!, error: NSError!) -> Void in
+                    if (success != nil) {
+                        println("Saved")
+                    } else {
+                        println("%@", error)
+                    }
+                }
+            }
+            
+        } else {
+            
+            // Log details of the failure
+            NSLog("Error: %@ %@", error, error.userInfo!)
+        }
+    }
+    
+    }
+
+
+
+func AddStudentsRelationshipTest() {
+    
+    var stuObj1 = PFObject(className:"Student")
+    stuObj1["studentName"] = "Kelly, Jim"
+    stuObj1.saveInBackgroundWithBlock( {
+        (success: Bool!, error: NSError!) -> Void in
+        if (success != nil) {
+            NSLog("Object created with id: (stuObj1.objectId)")
+        } else {
+            NSLog("%@", error)
+        }
+    })
+    
+    var stuObj2 = PFObject(className:"Student")
+    stuObj2["studentName"] = "Thomas, Thurman"
+    stuObj2.saveInBackgroundWithBlock( {
+        (success: Bool!, error: NSError!) -> Void in
+        if (success != nil) {
+            NSLog("Object created with id: (stuObj2.objectId)")
+        } else {
+            NSLog("%@", error)
+        }
+    })
+    
+    var testQuery = PFQuery(className: "Class")
+    testQuery.whereKey("classDescription", equalTo: "Resource 7 Dunn")
+    testQuery.findObjectsInBackgroundWithBlock {
+        (objects: [AnyObject]!, error: NSError!) -> Void in
+        if error == nil {
+            for object in objects {
+                println(object)
+                
+                // code to add relations
+                let myPFObject = object as PFObject
+                
+                var relation = myPFObject.relationForKey("Students") as PFRelation
+                
+                println(relation)
+                
+                relation.addObject(stuObj1)
+                relation.addObject(stuObj2)
                 myPFObject.saveInBackgroundWithBlock {
                     (success: Bool!, error: NSError!) -> Void in
                     if (success != nil) {
@@ -183,6 +244,8 @@ func AddRelationship() {
         }
     }
 }
+
+
 
 
  

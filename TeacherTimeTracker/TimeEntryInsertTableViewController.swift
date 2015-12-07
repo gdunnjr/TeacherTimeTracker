@@ -20,6 +20,8 @@ class TimeEntryInsertTableViewController: UITableViewController {
     var subject:String = "N/A"
     var student:String = "N/A"
     var selectedSubjectObject : PFObject! = nil
+    var selectedStudentsObject : NSMutableArray = []
+    var selectedStudents:[String] = []
     
     @IBOutlet weak var detailSubjectLabel: UILabel!
     
@@ -29,6 +31,7 @@ class TimeEntryInsertTableViewController: UITableViewController {
     
     @IBOutlet weak var SliderDuration: UISlider!
     @IBOutlet weak var LabelSlider: UILabel!
+  
     @IBAction func selectedSubject(segue:UIStoryboardSegue) {
         if let subjectSelectionTableViewController = segue.sourceViewController as? SubjectSelectionTableViewController {
         //selectedSubject = subjectSelectionTableViewController.selectedGame
@@ -45,6 +48,9 @@ class TimeEntryInsertTableViewController: UITableViewController {
             let selectedStudent = studentSelectionTableViewController.selectedStudent
             detailLabel.text = selectedStudent
             student = selectedStudent!
+            selectedStudentsObject = studentSelectionTableViewController.studentArray
+            selectedStudents = studentSelectionTableViewController.selectedStudents
+            
         }
     }
     
@@ -134,6 +140,49 @@ class TimeEntryInsertTableViewController: UITableViewController {
         
     }
     
+    override func shouldPerformSegueWithIdentifier(identifier: String!, sender: AnyObject!) -> Bool {
+        if identifier == "saveInsertTimeEntry" { // you define it in the storyboard (click on the segue, then Attributes' inspector > Identifier
+            var segueShouldOccur = true
+            var subjectSelected = false
+            var studentsSelected = false
+            var errorMessage = ""
+        
+            if (selectedSubjectObject == nil) {
+                errorMessage += "Subject must be selected. Please select a subject.\n"
+            }
+            for var index = 0; index < selectedStudents.count; ++index {
+                if (selectedStudents[index] == "Y") {
+                    studentsSelected = true
+                }
+                
+            }
+
+            if (!studentsSelected) {
+                errorMessage += "A student must be selected. Please select a student.\n"
+            }
+            
+            if (errorMessage != "") {
+                segueShouldOccur = false
+                let alert = UIAlertController(title: "Alert", message: errorMessage, preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+            } else {
+                segueShouldOccur = true
+            }
+            
+            if !segueShouldOccur {
+                println("*** NOPE, segue wont occur")
+                return false
+            }
+            else {
+                println("*** YEP, segue will occur")
+            }
+        }
+        
+        // by default, transition
+        return true
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "selectSubjectSegue" {
             if let subjectPickerViewController = segue.destinationViewController as? SubjectSelectionTableViewController {
@@ -151,10 +200,23 @@ class TimeEntryInsertTableViewController: UITableViewController {
             object["startDateTime"] = datePicker.date
             object["endDateTime"] = datePicker.date
             object["subjectPtr"] = selectedSubjectObject
+            object["duration"] = SliderDuration.value
+            
+            println(SliderDuration.description)
             
             //var relation = object.relationForKey("subjectPtr")
             //relation.addObject(selectedSubjectObject)
+            println(selectedStudents.count)
             
+            for var index = 0; index < selectedStudents.count; ++index {
+                print("index is \(index) selected is \(selectedStudents[index])")
+                if (selectedStudents[index] == "Y") {
+                    var relation = object.relationForKey("studentRelation")
+                    relation.addObject(selectedStudentsObject[index] as PFObject)
+                }
+                
+            }
+                
             object.saveInBackgroundWithBlock {
                 (success: Bool!, error: NSError!) -> Void in
                 if (success != nil) {

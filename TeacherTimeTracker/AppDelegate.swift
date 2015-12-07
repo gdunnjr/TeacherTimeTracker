@@ -70,7 +70,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             application.registerForRemoteNotificationTypes(types)
         }
 
-        
         return true
     }
 
@@ -90,6 +89,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 println("Ffailed to subscribe to push notifications on the broadcast channel with error = %@.", error)
             }
         }
+
+    
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {

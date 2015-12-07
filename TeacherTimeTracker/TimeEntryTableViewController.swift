@@ -12,6 +12,7 @@ import ParseUI
 
 class TimeEntryTableViewController: PFQueryTableViewController , UITableViewDelegate{
     
+    //@IBOutlet weak var labelDuration: UILabel!
     var sections = [String : Array<Int>]()
     var sectionToSportTypeMap = NSMutableDictionary()
     
@@ -42,7 +43,7 @@ class TimeEntryTableViewController: PFQueryTableViewController , UITableViewDele
     }
     
     @IBAction func saveInsertTimeEntry(segue:UIStoryboardSegue) {
-        
+         loadObjects()
     }
     
     // Define the query that will provide the data for the table view
@@ -112,10 +113,7 @@ class TimeEntryTableViewController: PFQueryTableViewController , UITableViewDele
         
         let tableSection = rowSections[sportTypeForSection(indexPath.section)]
         let tableItem = tableSection![indexPath.row]
-        cell.labelDuration?.text = tableItem.duration
-        cell.titleLabel?.text = tableItem.subject
-        //cell.subTitleLabel?.text = tableItem.notes
-        println(tableItem.subject)
+                
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         return cell
     }
@@ -135,7 +133,12 @@ class TimeEntryTableViewController: PFQueryTableViewController , UITableViewDele
                         // Pass the selected object to the destination view controller.
                         if let indexPath = self.tableView.indexPathForSelectedRow() {
                             let row = Int(indexPath.row)
-                            destination.currentObject = (objects?[row] as PFObject)
+                            println(objects?[row])
+                            
+                            let selectedObject = getPFObjectAtIndexPath(indexPath)
+                            destination.currentObject = selectedObject
+                            
+                            //destination.currentObject = (objects?[row] as PFObject)
                         }
                     }
             }
@@ -295,6 +298,13 @@ class TimeEntryTableViewController: PFQueryTableViewController , UITableViewDele
         header.contentView.backgroundColor = UIColor(red: 0/255, green: 80/255, blue: 255/255, alpha: 1.0) //make the background color light blue
         header.textLabel.textColor = UIColor.whiteColor() //make the text white
         header.alpha = 0.5 //make the header transparent
+    }
+    
+    func getPFObjectAtIndexPath(indexPath: NSIndexPath) -> PFObject {
+        var sportType: String = self.sportTypeForSection(indexPath.section)
+        var rowIndecesInSection: [AnyObject] = self.sections[sportType]!
+        var rowIndex: Int = rowIndecesInSection[indexPath.row] as Int
+        return self.objects[rowIndex] as PFObject
     }
     
     /*
