@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Bolts
 
 
 func createParseTestTimeEntryObject(testObjectName: String) {
@@ -21,9 +22,17 @@ func createParseTestSubjectObject(subjectName: String) {
     subObj1.saveInBackground()
 }
 
+func getSubject(subjectName: String)
+{
+    var testQuery = PFQuery(className: "TestSubject")
+    var mySubject = PFObject(className: "TestSubject")
+    testQuery.whereKey("testSubjectName", equalTo: subjectName)
+
+    let myPFC = PFCloudExt()
+}
 
 // example of getting an obect asynchronously
-func getTestSubjectObjectAsync(subjectName: String) {
+func getTestSubjectObjectAsync(subjectName: String) -> PFObject {
     var testQuery = PFQuery(className: "TestSubject")
     var mySubject = PFObject(className: "TestSubject")
     testQuery.whereKey("testSubjectName", equalTo: subjectName)
@@ -38,8 +47,10 @@ func getTestSubjectObjectAsync(subjectName: String) {
                 if let serviceTypeUnwrap = mySubject["testSubjectName"] as? String {
                     let mySubjectName = mySubject["testSubjectName"] as String
                     println(serviceTypeUnwrap)
+                
                 }
             }
+            
             
         } else {
             
@@ -47,6 +58,7 @@ func getTestSubjectObjectAsync(subjectName: String) {
             NSLog("Error: %@ %@", error, error.userInfo!)
         }
     }
+    return mySubject
 }
 
 // working example of how to a synchronous query on main thread
@@ -97,14 +109,14 @@ func getTestSubject(
 
 // Example of how to iterate over relationships
 func GetRelationships() {
-    var testQuery = PFQuery(className: "TestObject")
-    testQuery.whereKey("foo", equalTo: "Test Me New 92")
+    var testQuery = PFQuery(className: "Test")
+    testQuery.whereKey("name", equalTo: "Test Me New 3")
     testQuery.findObjectsInBackgroundWithBlock {
         (objects: [AnyObject]!, error: NSError!) -> Void in
         if error == nil {
             for object in objects {
                 println(object)
-                var relation = object.relationForKey("subjectPtr")
+                var relation = object.relationForKey("testSubject")
                 
                 // code to iterate relationships
                 relation.query().findObjectsInBackgroundWithBlock {
@@ -115,9 +127,10 @@ func GetRelationships() {
                         // objects has all the Posts the current user liked.
                         
                         for relationObject in relationObjects {
-                            //println(relationObject)
+                            println(relationObject)
                             var subjectName = ""
                             if let subjectNameUnwrap = relationObject["subjectName"] as? String {
+                                print( subjectNameUnwrap)
                                 subjectName = relationObject["subjectName"] as String
                                 println(subjectName)
                             }
@@ -136,25 +149,21 @@ func GetRelationships() {
     }
 }
 
+func SimpleTest () {
+    let post = PFObject(withoutDataWithClassName: "Test", objectId: "pBQNem3sYK")
+    let relation = post.relationForKey("testSubject")
+    let sub = PFObject(withoutDataWithClassName: "TestSubject", objectId: "uwAKrcUJFM")
+    relation.addObject(sub)
+    post.saveInBackground()
+}
 
 // Code to add relationships - due to asynchrounous nature of the save and
 //  query calls, this can get tricky
 func AddRelationship() {
-    var subObj1 = PFObject(className:"TestSubject")
-    subObj1["subjectName"] = "Prog 900"
-    subObj1.saveInBackground()
+    
 
-    var subObj2 = PFObject(className:"TestSubject")
-    subObj2["subjectName"] = "Prog 901"
-    subObj2.saveInBackground()
-
-
-    var testObject = PFObject(className:"TestObject")
-    testObject["foo"] = "Test Me New 3"
-    testObject.saveInBackground()
-
-    var testQuery = PFQuery(className: "TestObject")
-    testQuery.whereKey("foo", equalTo: "Test Me New 3")
+    var testQuery = PFQuery(className: "Test")
+    testQuery.whereKey("name", equalTo: "Test Me New 3")
     testQuery.findObjectsInBackgroundWithBlock {
         (objects: [AnyObject]!, error: NSError!) -> Void in
         if error == nil {
@@ -163,16 +172,26 @@ func AddRelationship() {
                 
                 // code to add relations
                 let myPFObject = object as PFObject
-                var relation = object.relationForKey("subjectPtr")
-                relation.addObject(subObj1)
-                relation.addObject(subObj2)
+                //var relation = myPFObject.relationForKey("testSubject")
+                
+                let relation = myPFObject.relationForKey("testSubject")
+                
+                let sub = PFObject(withoutDataWithClassName: "TestSubject", objectId: "uwAKrcUJFM")
+                let sub2 = PFObject(withoutDataWithClassName: "TestSubject", objectId: "OSfkQGnGoV")
+                //let sub = getTestSubjectObjectAsync("Prog 901")
+            
+                
+                relation.addObject(sub)
+                relation.addObject(sub2)
                 myPFObject.saveInBackgroundWithBlock {
                     (success: Bool!, error: NSError!) -> Void in
                     if (success != nil) {
                         println("Saved")
+                        GetRelationships()
                     } else {
                         println("%@", error)
                     }
+                
                 }
             }
             

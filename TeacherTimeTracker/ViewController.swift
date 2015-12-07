@@ -14,10 +14,17 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        var testObject = PFObject(className:"TestObject")
-        testObject["foo"] = "bar"
-        testObject.saveInBackground()
-    }
+        //var testObject = PFObject(className:"TestObject")
+        //testObject["foo"] = "bar"
+        //testObject.saveInBackground()
+        
+//SimpleTest()
+        
+
+        //AddRelationship()
+GetRelationships()
+        
+     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

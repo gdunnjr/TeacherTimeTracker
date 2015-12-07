@@ -10,6 +10,9 @@
 		B81C33611B7A561500688099 /* TimeEntryInsertTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81C33601B7A561500688099 /* TimeEntryInsertTableViewController.swift */; };
 		B81C33631B7BAC2A00688099 /* SubjectSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81C33621B7BAC2A00688099 /* SubjectSelectionTableViewController.swift */; };
 		B81C33651B9F4B2500688099 /* StudentsSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81C33641B9F4B2500688099 /* StudentsSelectionTableViewController.swift */; };
+		B82918E71C00BC27004E3BB9 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B82918E61C00BC27004E3BB9 /* Crashlytics.framework */; };
+		B82918E91C00D1DB004E3BB9 /* ParseUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82918E81C00D1DB004E3BB9 /* ParseUtil.swift */; };
+		B82918EB1C00D20E004E3BB9 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B82918EA1C00D20E004E3BB9 /* Bolts.framework */; };
 		B83D71C71BB825CD00776D62 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B83D71C51BB825CD00776D62 /* Fabric.framework */; };
 		B83D71C81BB825CD00776D62 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B83D71C61BB825CD00776D62 /* Crashlytics.framework */; };
 		B86EF3FB1B6E4691006FE66E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86EF3FA1B6E4691006FE66E /* AppDelegate.swift */; };
@@ -49,6 +52,9 @@
 		B81C33601B7A561500688099 /* TimeEntryInsertTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeEntryInsertTableViewController.swift; sourceTree = "<group>"; };
 		B81C33621B7BAC2A00688099 /* SubjectSelectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectSelectionTableViewController.swift; sourceTree = "<group>"; };
 		B81C33641B9F4B2500688099 /* StudentsSelectionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentsSelectionTableViewController.swift; sourceTree = "<group>"; };
+		B82918E61C00BC27004E3BB9 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
+		B82918E81C00D1DB004E3BB9 /* ParseUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseUtil.swift; sourceTree = "<group>"; };
+		B82918EA1C00D20E004E3BB9 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		B83D71C51BB825CD00776D62 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 		B83D71C61BB825CD00776D62 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		B86EF3F51B6E4691006FE66E /* TeacherTimeTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeacherTimeTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,6 +92,7 @@
 			files = (
 				B8DDEA451B6FCD000020DF25 /* ParseUI.framework in Frameworks */,
 				B8DDEA3B1B6FCC520020DF25 /* libstdc++.6.dylib in Frameworks */,
+				B82918E71C00BC27004E3BB9 /* Crashlytics.framework in Frameworks */,
 				B8DDEA3F1B6FCCEA0020DF25 /* ParseCrashReporting.framework in Frameworks */,
 				B8DDEA391B6FCC220020DF25 /* libsqlite3.dylib in Frameworks */,
 				B8DDEA341B6FC8DC0020DF25 /* SystemConfiguration.framework in Frameworks */,
@@ -96,6 +103,7 @@
 				B8DDEA3D1B6FCCDB0020DF25 /* Bolts.framework in Frameworks */,
 				B83D71C81BB825CD00776D62 /* Crashlytics.framework in Frameworks */,
 				B83D71C71BB825CD00776D62 /* Fabric.framework in Frameworks */,
+				B82918EB1C00D20E004E3BB9 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,6 +148,7 @@
 				B86EF4031B6E4691006FE66E /* LaunchScreen.xib */,
 				B8DDEA201B6FC7F50020DF25 /* Frameworks */,
 				B86EF3F81B6E4691006FE66E /* Supporting Files */,
+				B82918E81C00D1DB004E3BB9 /* ParseUtil.swift */,
 			);
 			path = TeacherTimeTracker;
 			sourceTree = "<group>";
@@ -186,6 +195,8 @@
 		B8DDEA201B6FC7F50020DF25 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B82918EA1C00D20E004E3BB9 /* Bolts.framework */,
+				B82918E61C00BC27004E3BB9 /* Crashlytics.framework */,
 				B83D71C51BB825CD00776D62 /* Fabric.framework */,
 				B83D71C61BB825CD00776D62 /* Crashlytics.framework */,
 				B8DDEA381B6FCC220020DF25 /* libsqlite3.dylib */,
@@ -321,6 +332,7 @@
 			files = (
 				B8F288D61B7535E900D1B552 /* TimeEntryTableViewController.swift in Sources */,
 				B86EF3FD1B6E4691006FE66E /* ViewController.swift in Sources */,
+				B82918E91C00D1DB004E3BB9 /* ParseUtil.swift in Sources */,
 				B81C33651B9F4B2500688099 /* StudentsSelectionTableViewController.swift in Sources */,
 				B88D3B771B776B900061640E /* TimeEntryDetailsViewController.swift in Sources */,
 				B8DDEA471B6FD2FC0020DF25 /* TabBarViewController.swift in Sources */,
@@ -458,6 +470,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"/Users/geralddunn/Downloads/parse-library-1.7.5",
+					"$(PROJECT_DIR)/TeacherTimeTracker",
 				);
 				INFOPLIST_FILE = TeacherTimeTracker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -477,6 +490,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"/Users/geralddunn/Downloads/parse-library-1.7.5",
+					"$(PROJECT_DIR)/TeacherTimeTracker",
 				);
 				INFOPLIST_FILE = TeacherTimeTracker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;

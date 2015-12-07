@@ -29,6 +29,7 @@ class TimeEntryInsertTableViewController: UITableViewController {
     
     @IBOutlet weak var SliderDuration: UISlider!
     @IBOutlet weak var LabelSlider: UILabel!
+    
     @IBAction func selectedSubject(segue:UIStoryboardSegue) {
         if let subjectSelectionTableViewController = segue.sourceViewController as? SubjectSelectionTableViewController {
         //selectedSubject = subjectSelectionTableViewController.selectedGame
