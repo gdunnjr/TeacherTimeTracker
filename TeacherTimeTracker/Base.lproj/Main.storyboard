@@ -175,8 +175,20 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdc-HA-2sX">
-                                <rect key="frame" x="142" y="114" width="398" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdc-HA-2sX" userLabel="LabelSubject">
+                                <rect key="frame" x="142" y="115" width="398" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BZG-lq-Kve" userLabel="LabelServiceType">
+                                <rect key="frame" x="142" y="144" width="398" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vq6-Oa-4ak" userLabel="LabelDuration">
+                                <rect key="frame" x="142" y="173" width="398" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -186,6 +198,8 @@
                     </view>
                     <connections>
                         <outlet property="labelDate" destination="5VA-l2-whb" id="eiC-Me-7m8"/>
+                        <outlet property="labelDuration" destination="Vq6-Oa-4ak" id="G0t-nk-MuG"/>
+                        <outlet property="labelServiceType" destination="BZG-lq-Kve" id="7PS-qz-VsB"/>
                         <outlet property="labelSubject" destination="cdc-HA-2sX" id="d1A-pD-Qv4"/>
                     </connections>
                 </viewController>
@@ -428,6 +442,7 @@
                         <outlet property="detailDateLabek" destination="kGG-fq-O9U" id="5DO-C3-Q1J"/>
                         <outlet property="detailLabel" destination="JlH-5T-dKh" id="Yko-sc-2ok"/>
                         <outlet property="detailSubjectLabel" destination="V1A-AL-S7X" id="drF-kB-oa4"/>
+                        <outlet property="segmentServiceType" destination="PTH-4j-6W6" id="OeL-om-y9W"/>
                         <outlet property="serviceDescTextBox" destination="qUt-Mh-5PA" id="FPE-9U-Z6q"/>
                     </connections>
                 </tableViewController>

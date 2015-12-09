@@ -17,6 +17,8 @@ class TimeEntryDetailsViewController: UIViewController {
 
     //@IBOutlet weak var subjectLabel: UILabel!
     
+    @IBOutlet weak var labelDuration: UILabel!
+    @IBOutlet weak var labelServiceType: UILabel!
     @IBOutlet weak var labelSubject: UILabel!
     @IBOutlet weak var labelDate: UILabel!
     var subjectName = ""
@@ -45,8 +47,27 @@ class TimeEntryDetailsViewController: UIViewController {
             if let subjectName = subjectPtr["subjectName"] as? String {
                 labelSubject.text = subjectName
             }
-         }
+        } else {
+            labelSubject.text = "Unknown"
+        }
         
+        if let serviceType = currentObject["serviceType"] as? String {
+            labelServiceType.text = serviceType
+        } else {
+            labelServiceType.text = "Unknown"
+        }
+        
+        if let durationString = currentObject["duration"] as Int! {
+            labelDuration.text = String(durationString) + " min"
+        } else {
+            labelDuration.text = ""
+        }
+        
+       // if let duration = currentObject["duration"] as? Int {
+       //     labelDuration.text = String(duration)
+       // } else {
+       //     labelDuration.text = "Unknown"
+       // }
     }
 
     override func didReceiveMemoryWarning() {

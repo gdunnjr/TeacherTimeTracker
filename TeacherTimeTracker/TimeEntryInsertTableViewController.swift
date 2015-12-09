@@ -11,6 +11,7 @@ import UIKit
 class TimeEntryInsertTableViewController: UITableViewController {
 
 
+    @IBOutlet weak var segmentServiceType: UISegmentedControl!
     @IBOutlet weak var detailDateLabek: UILabel!
     //@IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -141,44 +142,47 @@ class TimeEntryInsertTableViewController: UITableViewController {
     }
     
     override func shouldPerformSegueWithIdentifier(identifier: String!, sender: AnyObject!) -> Bool {
-        if identifier == "saveInsertTimeEntry" { // you define it in the storyboard (click on the segue, then Attributes' inspector > Identifier
-            var segueShouldOccur = true
-            var subjectSelected = false
-            var studentsSelected = false
-            var errorMessage = ""
-        
-            if (selectedSubjectObject == nil) {
-                errorMessage += "Subject must be selected. Please select a subject.\n"
-            }
-            for var index = 0; index < selectedStudents.count; ++index {
-                if (selectedStudents[index] == "Y") {
-                    studentsSelected = true
+        if identifier == nil {
+            
+        } else {
+            if identifier == "saveInsertTimeEntry" { // you define it in the storyboard (click on the segue, then Attributes' inspector > Identifier
+                var segueShouldOccur = true
+                var subjectSelected = false
+                var studentsSelected = false
+                var errorMessage = ""
+            
+                if (selectedSubjectObject == nil) {
+                    errorMessage += "Subject must be selected. Please select a subject.\n"
+                }
+                for var index = 0; index < selectedStudents.count; ++index {
+                    if (selectedStudents[index] == "Y") {
+                        studentsSelected = true
+                    }
+                    
+                }
+
+                if (!studentsSelected) {
+                    errorMessage += "A student must be selected. Please select a student.\n"
                 }
                 
-            }
-
-            if (!studentsSelected) {
-                errorMessage += "A student must be selected. Please select a student.\n"
-            }
-            
-            if (errorMessage != "") {
-                segueShouldOccur = false
-                let alert = UIAlertController(title: "Alert", message: errorMessage, preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
-            } else {
-                segueShouldOccur = true
-            }
-            
-            if !segueShouldOccur {
-                println("*** NOPE, segue wont occur")
-                return false
-            }
-            else {
-                println("*** YEP, segue will occur")
+                if (errorMessage != "") {
+                    segueShouldOccur = false
+                    let alert = UIAlertController(title: "Alert", message: errorMessage, preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
+                    self.presentViewController(alert, animated: true, completion: nil)
+                } else {
+                    segueShouldOccur = true
+                }
+                
+                if !segueShouldOccur {
+                    println("*** NOPE, segue wont occur")
+                    return false
+                }
+                else {
+                    println("*** YEP, segue will occur")
+                }
             }
         }
-        
         // by default, transition
         return true
     }
@@ -201,6 +205,7 @@ class TimeEntryInsertTableViewController: UITableViewController {
             object["endDateTime"] = datePicker.date
             object["subjectPtr"] = selectedSubjectObject
             object["duration"] = SliderDuration.value
+            object["serviceType"] = segmentServiceType.titleForSegmentAtIndex(segmentServiceType.selectedSegmentIndex)
             
             println(SliderDuration.description)
             

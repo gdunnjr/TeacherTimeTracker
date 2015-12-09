@@ -97,7 +97,7 @@ class TimeEntryTableViewController: PFQueryTableViewController , UITableViewDele
         
         var durationString = ""
         if let durationPtr = object["duration"] as Int! {
-            durationString = String(durationPtr) + "min"
+            durationString = String(durationPtr) + " min"
         } else {
             durationString = ""
         }
