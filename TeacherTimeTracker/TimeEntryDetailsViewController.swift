@@ -17,6 +17,7 @@ class TimeEntryDetailsViewController: UIViewController {
 
     //@IBOutlet weak var subjectLabel: UILabel!
     
+    @IBOutlet weak var textViewStudents: UITextView!
     @IBOutlet weak var labelDuration: UILabel!
     @IBOutlet weak var labelServiceType: UILabel!
     @IBOutlet weak var labelSubject: UILabel!
@@ -29,6 +30,7 @@ class TimeEntryDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //labelStudents.lineBreakMode = NSLineBreakMode.ByWordWrapping
        
         println(currentObject)
         
@@ -63,11 +65,31 @@ class TimeEntryDetailsViewController: UIViewController {
             labelDuration.text = ""
         }
         
-       // if let duration = currentObject["duration"] as? Int {
-       //     labelDuration.text = String(duration)
-       // } else {
-       //     labelDuration.text = "Unknown"
-       // }
+        // code to iterate students
+        var relation = currentObject.relationForKey("studentRelation")
+        self.textViewStudents.text = ""
+        relation.query().findObjectsInBackgroundWithBlock {
+            (relationObjects: [AnyObject]!, error: NSError?) -> Void in
+            if let error = error {
+                // There was an error
+            } else {
+                // objects has all the Posts the current user liked.
+                
+                for relationObject in relationObjects {
+                    //println(relationObject)
+                    var studentName = ""
+                    if let _studentName = relationObject["studentName"] as? String {
+                        //subjectName = relationObject["subjectName"] as String
+                        studentName = _studentName
+                        //self.labelStudents.text = self.labelStudents.text! + studentName
+                        self.textViewStudents.text = self.textViewStudents.text! + studentName + "\n"
+                        println(studentName)
+                    }
+                }
+                
+            }
+        }
+        textViewStudents.flashScrollIndicators()
     }
 
     override func didReceiveMemoryWarning() {
