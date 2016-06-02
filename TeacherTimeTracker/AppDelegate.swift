@@ -33,8 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Uncomment this line if you want to enable Crash Reporting
         // ParseCrashReporting.enable()
         
-        Parse.setApplicationId("udLt40Ay9sTfCYeXoHS6w7ACo8hT7mxfh6vnwg5M",
-            clientKey: "xrFJIcBPMfPEox9G3CbtqEWoUNH1bZLG1QddwZvG")
+        Parse.setApplicationId("####################",
+            clientKey: "######################")
         
         PFUser.enableAutomaticUser()
         
